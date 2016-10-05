@@ -11,13 +11,11 @@ void Checkbox::updateLook()
 	{
 		m_rectangle.setFillColor(m_outlineColor);
 		m_rectangle.setOutlineColor(m_fillColor);
-
 		m_rectangle.setOutlineThickness(m_thickness);
 	}
 	else
 	{
 		m_rectangle.setFillColor(m_fillColor);
-
 		m_rectangle.setOutlineThickness(0);
 	}
 }
@@ -32,7 +30,7 @@ Checkbox::Checkbox(float_t posX, float_t posY, uint8_t width, uint8_t height)
 	m_fillColor = sf::Color(104, 104, 104);
 	m_outlineColor = sf::Color(62, 62, 66);
 	m_thickness = 1.f;
-	
+
 	m_rectangle.setFillColor(m_fillColor);
 	m_rectangle.setOutlineColor(m_outlineColor);
 	m_rectangle.setOutlineThickness(m_thickness);
