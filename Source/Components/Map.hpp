@@ -10,8 +10,8 @@ class Map
 public:
 	Map(uint16_t width, uint16_t height);
 
-	uint16_t GetWidth();
-	uint16_t GetHeight();
+	uint16_t GetWidth() const;
+	uint16_t GetHeight() const;
 
 	void SetWidth(uint16_t width);
 	void SetHeight(uint16_t height);

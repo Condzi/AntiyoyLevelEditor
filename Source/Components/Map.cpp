@@ -8,12 +8,12 @@ Map::Map(uint16_t width, uint16_t height)
 	m_map.resize(m_width * m_height);
 }
 
-uint16_t Map::GetWidth()
+uint16_t Map::GetWidth() const
 {
 	return m_width;
 }
 
-uint16_t Map::GetHeight()
+uint16_t Map::GetHeight() const
 {
 	return m_height;
 }
