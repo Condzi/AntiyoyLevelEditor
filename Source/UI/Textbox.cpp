@@ -26,8 +26,8 @@ NumBox::NumBox(float_t posX, float_t posY, uint8_t width, uint8_t height)
 	}
 
 	m_text.setFont(m_font);
-	m_text.setPosition(posX + m_thickness, posY + m_thickness);
 	m_text.setCharacterSize(height - m_thickness * 2);
+	m_text.setPosition(posX / 1.01f, posY / 1.05f);
 	m_text.setFillColor(sf::Color(241, 241, 241));
 
 	m_variable = nullptr;
@@ -74,6 +74,8 @@ void NumBox::Update(sf::Event & event, int64_t rangeMin, int64_t rangeMax)
 	}
 
 	uint32_t unicodeChar = 0;
+	// For some operations
+	std::string helpStr = "";
 
 	if (event.type == sf::Event::TextEntered)
 	{
@@ -94,30 +96,45 @@ void NumBox::Update(sf::Event & event, int64_t rangeMin, int64_t rangeMax)
 			{
 				if (unicodeChar == 8) // Backspace
 				{
-					std::string str = m_text.getString();
-					if (str.size() > 0)
+					helpStr = m_text.getString();
+					if (helpStr.size() > 0)
 					{
-						str.erase(str.end() - 1);
+						helpStr.erase(helpStr.end() - 1);
 					}
 					else
 					{
-						str = "";
+						helpStr = "";
 					}
-					m_text.setString(str);
+					m_text.setString(helpStr);
 				}
 				else // 0..9
 				{
+					if ((m_text.getString().getSize() == 0 ||
+						m_text.getString()[0] == '-') &&
+						unicodeChar == 48) //if 0 is first letter
+					{
+						return;
+					}
+
 					m_text.setString(m_text.getString() + std::to_string(unicodeChar - 48));
 				}
 
 				if (m_text.getString().getSize())
 				{
-					*m_variable = std::stoi(std::string(m_text.getString()));
-				}
+					int64_t conversion = std::stoi(std::string(m_text.getString()));
 
-				std::cout << m_text.getPosition().x << ", " << m_text.getPosition().y << "\n";
-				std::cout << m_text.getCharacterSize() << "\n";
-				std::cout << (std::string)m_text.getString() << "\n=====\n";
+					if (conversion < rangeMin || conversion > rangeMax + 1)
+					{
+						//... message or something
+						helpStr = m_text.getString();
+						helpStr.erase(helpStr.end() - 1);
+						m_text.setString(helpStr);
+					}
+					else
+					{
+						*m_variable = conversion;
+					}
+				}
 			}
 		}
 	}

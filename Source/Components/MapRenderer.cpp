@@ -8,10 +8,11 @@ void MapRenderer::draw(sf::RenderTarget & target, sf::RenderStates state) const
 	}
 }
 
-MapRenderer::MapRenderer(const Map * mapToRender, uint16_t tileSize)
+MapRenderer::MapRenderer(const Map * mapToRender, uint16_t tileSize, float_t thickness)
 {
 	m_mapToRender = mapToRender;
 	m_tileSize = tileSize;
+	m_thickness = thickness;
 	update();
 }
 
@@ -42,9 +43,9 @@ void MapRenderer::update()
 	sf::CircleShape templateCircle;
 	templateCircle.setFillColor(sf::Color::Red);
 	templateCircle.setOutlineColor(sf::Color::Blue);
-	templateCircle.setOutlineThickness(1.f);
+	templateCircle.setOutlineThickness(m_thickness);
 	templateCircle.rotate(90);
-	templateCircle.setRadius(m_tileSize / 1.6f);
+	templateCircle.setRadius(m_tileSize / 2);
 	templateCircle.setPointCount(6);
 
 	m_tiles.clear();
@@ -56,11 +57,11 @@ void MapRenderer::update()
 		{
 			if (x % 2)
 			{
-				templateCircle.setPosition(x * m_tileSize + m_tileSize * 1.25f, (y * m_tileSize - m_tileSize / 2) + m_tileSize);
+				templateCircle.setPosition(x * (templateCircle.getGlobalBounds().width * 0.75f) + m_tileSize, y * (templateCircle.getGlobalBounds().height) + m_tileSize / 2.5f);
 			}
 			else
 			{
-				templateCircle.setPosition(x * m_tileSize  + m_tileSize * 1.25f, (y * m_tileSize - m_tileSize) + m_tileSize);
+				templateCircle.setPosition(x * (templateCircle.getGlobalBounds().width * 0.75f) + m_tileSize, y * (templateCircle.getGlobalBounds().height) - (templateCircle.getGlobalBounds().height * 0.5f) + m_tileSize / 2.5f);
 			}
 
 			m_tiles.push_back(templateCircle);

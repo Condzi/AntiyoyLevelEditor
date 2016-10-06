@@ -8,10 +8,13 @@ int main()
 {
 	try
 	{
-		sf::RenderWindow win(sf::VideoMode(800, 600), "Antiyoy Level Editor", sf::Style::Close);
+		sf::RenderWindow win(sf::VideoMode(800, 600), "Antiyoy Level Editor");
 
-		Map map(20, 20);
-		MapRenderer mapRenderer(&map);
+		Map map(10, 10);
+		MapRenderer mapRenderer(&map, 50);
+		NumBox nb(200, 200, 200, 100);
+		int64_t x = 0;
+		nb.SetVariablePointer(&x);
 
 		sf::Event ev;
 
@@ -23,10 +26,12 @@ int main()
 				{
 					win.close();
 				}
+				nb.Update(ev, -1, 100);
 			}
 
-			win.clear();
+			win.clear(sf::Color::Cyan);
 			win.draw(mapRenderer);
+			win.draw(nb);
 			win.display();
 		}
 
@@ -36,6 +41,10 @@ int main()
 	{
 		std::cout << e.what() << "\n";
 		std::cin.get();
+
+		return 1;
 	}
+
+	return 0;
 }
 

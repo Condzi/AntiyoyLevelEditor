@@ -11,7 +11,7 @@ private:
 	void update();
 
 public:
-	MapRenderer(const Map * mapToRender, uint16_t tileSize = 24);
+	MapRenderer(const Map * mapToRender, uint16_t tileSize = 30, float_t thicnkess = 1.f);
 
 	uint16_t GetTileSize();
 	const Map & GetMap();
@@ -22,6 +22,7 @@ public:
 private:
 	const Map * m_mapToRender;
 	uint16_t m_tileSize;
+	float_t m_thickness;
 
 	std::vector< sf::CircleShape > m_tiles;
 };
