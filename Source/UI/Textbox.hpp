@@ -13,9 +13,13 @@ private:
 	void draw(sf::RenderTarget & target, sf::RenderStates state) const;
 
 public:
-	NumBox(float_t posX, float_t posY, uint8_t width = 64, uint8_t height = 24);
+	NumBox(float_t posX = 0, float_t posY = 0, uint8_t width = 64, uint8_t height = 24);
 
+	sf::FloatRect GetRectangleGlobalBounds();
+
+	void SetPosition(float_t posX, float_t posY);
 	void SetVariablePointer(int64_t * var);
+	void SetVariableRefrence(int64_t & var);
 	void SetFillColor(const sf::Color & color);
 	void SetOutlineColor(const sf::Color & color);
 	void SetTextColor(const sf::Color & color);

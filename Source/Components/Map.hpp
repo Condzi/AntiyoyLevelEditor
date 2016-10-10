@@ -17,7 +17,12 @@ public:
 	void SetHeight(uint16_t height);
 	void Resize(uint16_t width, uint16_t height);
 
+	// Usage:
+	// Map::operator[positionX * Map::GetWidth() + y]
 	Cell & operator[](uint16_t index);
+
+	// To Do
+	// bool SaveToXML(const std::string & filename);
 
 private:
 	// Allocated memory for map
@@ -27,4 +32,6 @@ private:
 
 	uint16_t m_width;
 	uint16_t m_height;
+
+	Cell m_templateCell;
 };

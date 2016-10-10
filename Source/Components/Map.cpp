@@ -38,5 +38,10 @@ void Map::Resize(uint16_t width, uint16_t height)
 
 Cell & Map::operator[](uint16_t index)
 {
+	if (index > m_map.size())
+	{
+		return m_templateCell;
+	}
+
 	return m_map[index];
 }

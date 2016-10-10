@@ -22,20 +22,39 @@ NumBox::NumBox(float_t posX, float_t posY, uint8_t width, uint8_t height)
 
 	if (!m_font.loadFromFile("rsrc/default.ttf"))
 	{
-		throw std::exception("Cannot load texture (rsrc/default.ttf)");
+		throw std::exception("Cannot load texture (rsrc/default.ttf) [NumBox]");
 	}
-
+	
+	m_text.setString("");
 	m_text.setFont(m_font);
 	m_text.setCharacterSize(height - m_thickness * 2);
-	m_text.setPosition(posX / 1.01f, posY / 1.05f);
+	m_text.setPosition(posX , posY);
 	m_text.setFillColor(sf::Color(241, 241, 241));
 
 	m_variable = nullptr;
 }
 
+sf::FloatRect NumBox::GetRectangleGlobalBounds()
+{
+	return m_rectangle.getGlobalBounds();
+}
+
+void NumBox::SetPosition(float_t posX, float_t posY)
+{
+	m_rectangle.setPosition(posX, posY);
+	m_text.setPosition(posX, posY);
+}
+
 void NumBox::SetVariablePointer(int64_t * var)
 {
 	m_variable = var;
+	m_text.setString(std::to_string(*m_variable));
+}
+
+void NumBox::SetVariableRefrence(int64_t & var)
+{
+	m_variable = &var;
+	m_text.setString(std::to_string(*m_variable));
 }
 
 void NumBox::SetFillColor(const sf::Color & color)

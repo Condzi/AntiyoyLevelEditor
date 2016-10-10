@@ -14,10 +14,12 @@ private:
 	void updateLook();
 
 public:
-	Checkbox(float_t posX, float_t posY, uint8_t width = 16, uint8_t height = 16);
+	Checkbox(float_t posX = 0, float_t posY = 0, uint8_t width = 16, uint8_t height = 16);
 
 	bool GetState();
+	sf::FloatRect GetRectangleGlobalBounds();
 
+	void SetPosition(float_t posX, float_t posY);
 	void SetState(bool state);
 	void SetFillColor(const sf::Color & color);
 	void SetOutlineColor(const sf::Color & color);
@@ -31,7 +33,7 @@ private:
 
 	// When selected - fill = outline 
 
-	sf::Color m_fillColor;
-	sf::Color m_outlineColor;
+	sf::Color m_bgColor;
+	sf::Color m_fgColor;
 	float_t m_thickness;
 };
