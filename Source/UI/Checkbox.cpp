@@ -51,6 +51,11 @@ void Checkbox::SetPosition(float_t posX, float_t posY)
 	m_rectangle.setPosition(posX, posY);
 }
 
+void Checkbox::Move(float_t offsetX, float_t offsetY)
+{
+	m_rectangle.move(offsetX, offsetY);
+}
+
 void Checkbox::SetState(bool state)
 {
 	m_state = state;

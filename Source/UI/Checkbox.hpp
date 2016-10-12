@@ -20,6 +20,7 @@ public:
 	sf::FloatRect GetRectangleGlobalBounds();
 
 	void SetPosition(float_t posX, float_t posY);
+	void Move(float_t offsetX, float_t offsetY);
 	void SetState(bool state);
 	void SetFillColor(const sf::Color & color);
 	void SetOutlineColor(const sf::Color & color);

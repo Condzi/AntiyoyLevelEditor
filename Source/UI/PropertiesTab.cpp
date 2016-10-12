@@ -3,7 +3,7 @@
 void PropertiesTab::draw(sf::RenderTarget & target, sf::RenderStates state) const
 {
 	target.draw(m_background, state);
-	
+
 	if (m_cellPtr == nullptr)
 	{
 		target.draw(m_cellNotSelectedText);
@@ -25,7 +25,7 @@ void PropertiesTab::arrange()
 {
 	m_background.setPosition(m_positionX, m_positionY);
 
-	m_cellNotSelectedText.setPosition(m_positionX + m_background.getGlobalBounds().width / 2 - m_cellNotSelectedText.getGlobalBounds().width / 2, 
+	m_cellNotSelectedText.setPosition(m_positionX + m_background.getGlobalBounds().width / 2 - m_cellNotSelectedText.getGlobalBounds().width / 2,
 		m_positionY + m_background.getGlobalBounds().height / 2 - m_cellNotSelectedText.getGlobalBounds().height);
 
 	m_isAliveCheckbox.SetPosition(m_positionX + 10, m_positionY + 10);
@@ -42,7 +42,7 @@ void PropertiesTab::arrange()
 
 }
 
-PropertiesTab::PropertiesTab(float posX, float posY)
+PropertiesTab::PropertiesTab(float_t posX, float_t posY)
 {
 	m_cellPtr = nullptr;
 	m_positionX = posX;
@@ -125,16 +125,29 @@ void PropertiesTab::SetActiveBox(uint8_t id)
 		m_incomeSelected = true;
 }
 
-void PropertiesTab::SetPosition(float x, float y)
+void PropertiesTab::SetPosition(float_t x, float_t y)
 {
 	m_positionX = x;
 	m_positionY = y;
 	arrange();
 }
 
-void PropertiesTab::Move(float x, float y)
+void PropertiesTab::Move(float_t x, float_t y)
 {
 	m_positionX += x;
 	m_positionY += y;
-	arrange();
+
+	m_background.move(x, y);
+
+	m_isAliveText.move(x, y);
+	m_ownerIdText.move(x, y);
+	m_difficultyText.move(x, y);
+	m_incomeText.move(x, y);
+
+	m_cellNotSelectedText.move(x, y);
+
+	m_isAliveCheckbox.Move(x, y);
+	m_ownerIdNumBox.Move(x, y);
+	m_difficultyNumBox.Move(x, y);
+	m_incomeNumBox.Move(x, y);
 }

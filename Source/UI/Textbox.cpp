@@ -45,6 +45,12 @@ void NumBox::SetPosition(float_t posX, float_t posY)
 	m_text.setPosition(posX, posY);
 }
 
+void NumBox::Move(float_t offsetX, float_t offsetY)
+{
+	m_rectangle.move(offsetX, offsetY);
+	m_text.move(offsetX, offsetY);
+}
+
 void NumBox::SetVariablePointer(int64_t * var)
 {
 	m_variable = var;

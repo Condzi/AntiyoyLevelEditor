@@ -18,6 +18,7 @@ public:
 	sf::FloatRect GetRectangleGlobalBounds();
 
 	void SetPosition(float_t posX, float_t posY);
+	void Move(float_t offsetX, float_t offsetY);
 	void SetVariablePointer(int64_t * var);
 	void SetVariableRefrence(int64_t & var);
 	void SetFillColor(const sf::Color & color);

@@ -6,6 +6,7 @@
 
 // Properties Tab
 // Using pointer to Cell (if nullptr - tab is not displaying anything) 
+// Probably unneeded m_bgColor
 class PropertiesTab :
 	public sf::Drawable
 {
@@ -13,7 +14,7 @@ class PropertiesTab :
 	void arrange();
 
 public:
-	PropertiesTab(float posX, float posY);
+	PropertiesTab(float_t posX, float_t posY);
 
 	// 0 - isAlive 
 	// 1 - ownerId
@@ -31,14 +32,14 @@ public:
 	// 2 - difficulty
 	// 3 - income
 	void SetActiveBox(uint8_t id);
-	void SetPosition(float x, float y);
+	void SetPosition(float_t x, float_t y);
 
-	void Move(float x, float y);
+	void Move(float_t x, float_t y);
 
 private:
 	Cell * m_cellPtr;
-	float m_positionX;
-	float m_positionY;
+	float_t m_positionX;
+	float_t m_positionY;
 
 	sf::RectangleShape m_background;
 	// 30,30,30,250
