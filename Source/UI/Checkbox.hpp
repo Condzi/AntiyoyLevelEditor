@@ -21,10 +21,7 @@ public:
 
 	void SetPosition(float_t posX, float_t posY);
 	void Move(float_t offsetX, float_t offsetY);
-	void SetState(bool state);
-	void SetFillColor(const sf::Color & color);
-	void SetOutlineColor(const sf::Color & color);
-	void SetThickness(float_t thickness);
+	void SetState(bool state);;
 
 	void Toggle();
 

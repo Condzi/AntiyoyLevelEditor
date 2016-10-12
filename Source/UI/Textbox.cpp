@@ -63,34 +63,6 @@ void NumBox::SetVariableRefrence(int64_t & var)
 	m_text.setString(std::to_string(*m_variable));
 }
 
-void NumBox::SetFillColor(const sf::Color & color)
-{
-	m_fillColor = color;
-	m_rectangle.setFillColor(color);
-}
-
-void NumBox::SetOutlineColor(const sf::Color & color)
-{
-	m_outlineColor = color;
-	m_rectangle.setOutlineColor(color);
-}
-
-void NumBox::SetTextColor(const sf::Color & color)
-{
-	m_text.setFillColor(color);
-}
-
-void NumBox::SetTextSize(uint8_t size)
-{
-	m_text.setCharacterSize(size);
-}
-
-void NumBox::SetThickness(float_t thickness)
-{
-	m_thickness = thickness;
-	m_rectangle.setOutlineThickness(m_thickness);
-}
-
 void NumBox::Update(sf::Event & event, int64_t rangeMin, int64_t rangeMax)
 {
 	if (rangeMax < rangeMin)

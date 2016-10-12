@@ -3,6 +3,7 @@
 
 
 // Color Tab
+// 4x4
 class ColorTab :
 	public sf::Drawable
 {
@@ -17,6 +18,10 @@ public:
 	sf::FloatRect GetRectangleGlobalBounds(uint8_t id);
 
 	void SetPosition(float_t x, float_t y);
+	// colors are in map 4x4
+	// x * width + y = index
+	// x + 4 + y
+	void SetColor(uint8_t index, const sf::Color & color);
 	void Move(float_t x, float_t y);
 
 private:

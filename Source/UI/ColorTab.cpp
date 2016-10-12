@@ -62,6 +62,17 @@ void ColorTab::SetPosition(float_t x, float_t y)
 	arrange();	
 }
 
+void ColorTab::SetColor(uint8_t index, const sf::Color & color)
+{
+	if (index > 16)
+	{
+		return;
+	}
+
+	m_colors[index] = color;
+	m_colorRepresentation[index].setFillColor(color);
+}
+
 void ColorTab::Move(float_t x, float_t y)
 {
 	m_positionX += x;
