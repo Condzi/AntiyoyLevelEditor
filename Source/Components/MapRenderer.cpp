@@ -55,20 +55,37 @@ void MapRenderer::SetTileSize(uint16_t size)
 
 void MapRenderer::Draw(sf::RenderTarget & window)
 {
-	uint32_t posXbegin = abs(m_areaToRender.left) / m_tileSize;
-	uint32_t posYbegin = abs(m_areaToRender.top) / m_tileSize;
+	uint32_t posXbegin = m_areaToRender.left / m_manipulator.getGlobalBounds().width;
+	uint32_t posYbegin = m_areaToRender.top / m_manipulator.getGlobalBounds().height;
+
+	if (m_areaToRender.left < 0)
+	{
+		posXbegin = 0;
+	}
+	if (m_areaToRender.top < 0)
+	{
+		posYbegin = 0;
+	}
+
 	uint32_t indexBegin = posYbegin * m_mapToRender->GetWidth() + posXbegin;
 
-	uint32_t posXend = abs(m_areaToRender.left + m_areaToRender.width) / m_tileSize;
-	uint32_t posYend = abs(m_areaToRender.top + m_areaToRender.height) / m_tileSize;
-	uint32_t index = 0;
+	uint32_t posXend = (m_areaToRender.left + m_areaToRender.width) / m_manipulator.getGlobalBounds().width;
+	uint32_t posYend = (m_areaToRender.top + m_areaToRender.height) / m_manipulator.getGlobalBounds().height;
+
+	if (m_areaToRender.width < 0)
+	{
+		posXend = 1280;
+	}
+	if (m_areaToRender.height < 0 )
+	{
+		posYend = 720;
+	}
 
 	for (uint32_t y = 0; y < posYend; ++y)
 	{
 		for (uint32_t x = 0; x < posXend; ++x)
 		{
-			index = indexBegin + y * m_mapToRender->GetWidth() + x;
-			m_manipulator.setPosition(m_positions[index]);
+			m_manipulator.setPosition(m_positions[indexBegin + y * m_mapToRender->GetWidth() + x]);
 			window.draw(m_manipulator);
 		}
 	}
