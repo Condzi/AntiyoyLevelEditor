@@ -55,16 +55,22 @@ void MapRenderer::SetTileSize(uint16_t size)
 
 void MapRenderer::Draw(sf::RenderTarget & window)
 {
-	if (m_mapToRender->GetWidth() < 60 &&
-		m_mapToRender->GetHeight() < 60)
+	uint32_t posXbegin = abs(m_areaToRender.left) / m_tileSize;
+	uint32_t posYbegin = abs(m_areaToRender.top) / m_tileSize;
+	uint32_t indexBegin = posYbegin * m_mapToRender->GetWidth() + posXbegin;
+
+	uint32_t posXend = abs(m_areaToRender.left + m_areaToRender.width) / m_tileSize;
+	uint32_t posYend = abs(m_areaToRender.top + m_areaToRender.height) / m_tileSize;
+	uint32_t index = 0;
+
+	for (uint32_t y = 0; y < posYend; ++y)
 	{
-		for (sf::Vector2f & position : m_positions)
+		for (uint32_t x = 0; x < posXend; ++x)
 		{
-			m_manipulator.setPosition(position);
+			index = indexBegin + y * m_mapToRender->GetWidth() + x;
+			m_manipulator.setPosition(m_positions[index]);
 			window.draw(m_manipulator);
 		}
-
-		return;
 	}
 }
 
@@ -73,7 +79,6 @@ void MapRenderer::update()
 	sf::Vector2f templateVector(0, 0);
 
 	m_positions.clear();
-	//m_positions.resize(m_mapToRender->GetWidth() * m_mapToRender->GetHeight());
 
 	for (uint32_t y = 0; y < m_mapToRender->GetHeight(); ++y)
 	{

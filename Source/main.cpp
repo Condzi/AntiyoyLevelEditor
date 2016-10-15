@@ -5,7 +5,7 @@ int main()
 {
 	try
 	{
-		Map m(50, 50);
+		Map m(1024, 1024);
 		Editor editor(&m);
 		editor.Run();
 		return 0;
