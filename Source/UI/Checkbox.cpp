@@ -20,12 +20,12 @@ void Checkbox::updateLook()
 	}
 }
 
-Checkbox::Checkbox(float_t posX, float_t posY, uint8_t width, uint8_t height)
+Checkbox::Checkbox(float_t posX, float_t posY)
 {
 	m_state = false;
 
 	m_rectangle.setPosition(posX, posY);
-	m_rectangle.setSize(sf::Vector2f(width, height));
+	m_rectangle.setSize(sf::Vector2f(16, 16));
 
 	m_bgColor = sf::Color(104, 104, 104);
 	m_fgColor = sf::Color(62, 62, 66);

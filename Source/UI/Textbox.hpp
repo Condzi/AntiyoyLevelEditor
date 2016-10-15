@@ -21,12 +21,6 @@ public:
 	void Move(float_t offsetX, float_t offsetY);
 	void SetVariablePointer(int64_t * var);
 	void SetVariableRefrence(int64_t & var);
-	void SetFillColor(const sf::Color & color);
-	void SetOutlineColor(const sf::Color & color);
-	void SetTextColor(const sf::Color & color);
-	// Careful! Text size is already scaled to box height!
-	void SetTextSize(uint8_t size);
-	void SetThickness(float_t thickness);
 
 	void Update(sf::Event & event, int64_t rangeMin, int64_t rangeMax);
 

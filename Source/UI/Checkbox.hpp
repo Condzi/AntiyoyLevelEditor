@@ -14,7 +14,7 @@ private:
 	void updateLook();
 
 public:
-	Checkbox(float_t posX = 0, float_t posY = 0, uint8_t width = 16, uint8_t height = 16);
+	Checkbox(float_t posX = 0, float_t posY = 0);
 
 	bool GetState();
 	sf::FloatRect GetRectangleGlobalBounds();

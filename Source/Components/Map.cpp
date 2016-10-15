@@ -36,7 +36,7 @@ void Map::Resize(uint16_t width, uint16_t height)
 	m_map.resize(m_width * m_height);
 }
 
-Cell & Map::operator[](uint16_t index)
+Cell & Map::operator[](uint32_t index)
 {
 	if (index > m_map.size())
 	{

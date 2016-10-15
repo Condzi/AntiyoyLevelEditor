@@ -48,14 +48,14 @@ PropertiesTab::PropertiesTab(float_t posX, float_t posY)
 	m_positionX = posX;
 	m_positionY = posY;
 
-	m_bgColor = sf::Color(30, 30, 30);
-	m_background.setFillColor(m_bgColor);
+	m_background.setFillColor(sf::Color(30, 30, 30));
 	m_background.setSize(sf::Vector2f(250, 170));
 
 	if (!m_font.loadFromFile("rsrc/default.ttf"))
 	{
 		throw std::exception("Cannot load texture (rsrc/default.ttf) [PropertiesTab]");
 	}
+
 	m_textColor = sf::Color(241, 241, 241);
 
 	m_isAliveText = sf::Text("Is Alive", m_font);

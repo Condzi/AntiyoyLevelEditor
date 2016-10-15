@@ -11,7 +11,7 @@ class ColorTab :
 	void arrange();
 
 public:
-	ColorTab(float_t x, float_t y);
+	ColorTab(float_t posX = 0, float_t posY = 0);
 
 	// 0 - 16
 	// 16 - background

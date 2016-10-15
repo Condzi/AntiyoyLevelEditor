@@ -18,8 +18,8 @@ public:
 	void Resize(uint16_t width, uint16_t height);
 
 	// Usage:
-	// Map::operator[positionX * Map::GetWidth() + y]
-	Cell & operator[](uint16_t index);
+	// Map::operator[y * Map::GetWidth() + x]
+	Cell & operator[](uint32_t index);
 
 	// To Do
 	// bool SaveToXML(const std::string & filename);

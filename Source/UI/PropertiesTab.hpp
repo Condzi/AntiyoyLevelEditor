@@ -6,15 +6,15 @@
 
 // Properties Tab
 // Using pointer to Cell (if nullptr - tab is not displaying anything) 
-// Probably unneeded m_bgColor
 class PropertiesTab :
 	public sf::Drawable
 {
+private:
 	void draw(sf::RenderTarget & target, sf::RenderStates state) const;
 	void arrange();
 
 public:
-	PropertiesTab(float_t posX, float_t posY);
+	PropertiesTab(float_t posX = 0, float_t posY = 0);
 
 	// 0 - isAlive 
 	// 1 - ownerId
@@ -42,8 +42,6 @@ private:
 	float_t m_positionY;
 
 	sf::RectangleShape m_background;
-	// 30,30,30,250
-	sf::Color m_bgColor;
 
 	// rsrc/default.ttf
 	sf::Font m_font;

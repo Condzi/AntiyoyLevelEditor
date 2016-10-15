@@ -1,0 +1,8 @@
+﻿Skróty klawiszowe:
+
+-NARDZĘDZIA
+	F1 - Narzędzie Zaznacz
+	F2 - Nardzędzie Pędzel
+
+-EDYTOR
+	ŚPM i przeciągnięcie - poruszanie się po mapie
