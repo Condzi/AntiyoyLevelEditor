@@ -1,6 +1,7 @@
 #pragma once
 #include "Map.hpp"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class MapRenderer
 {

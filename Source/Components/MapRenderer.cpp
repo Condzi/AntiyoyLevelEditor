@@ -43,8 +43,6 @@ void MapRenderer::MoveAreaToRender(float_t x, float_t y)
 {
 	m_areaToRender.left += x;
 	m_areaToRender.top += y;
-	m_areaToRender.width += x;
-	m_areaToRender.height += y;
 }
 
 void MapRenderer::SetTileSize(uint16_t size)
@@ -55,8 +53,8 @@ void MapRenderer::SetTileSize(uint16_t size)
 
 void MapRenderer::Draw(sf::RenderTarget & window)
 {
-	uint32_t posXbegin = m_areaToRender.left / m_manipulator.getGlobalBounds().width;
-	uint32_t posYbegin = m_areaToRender.top / m_manipulator.getGlobalBounds().height;
+	uint32_t posXbegin = (uint32_t)m_areaToRender.left / m_tileSize;
+	uint32_t posYbegin = (uint32_t)m_areaToRender.top / m_tileSize;
 
 	if (m_areaToRender.left < 0)
 	{
@@ -69,14 +67,14 @@ void MapRenderer::Draw(sf::RenderTarget & window)
 
 	uint32_t indexBegin = posYbegin * m_mapToRender->GetWidth() + posXbegin;
 
-	uint32_t posXend = (m_areaToRender.left + m_areaToRender.width) / m_manipulator.getGlobalBounds().width;
-	uint32_t posYend = (m_areaToRender.top + m_areaToRender.height) / m_manipulator.getGlobalBounds().height;
+	uint32_t posXend = (m_areaToRender.left + m_areaToRender.width) / m_tileSize;
+	uint32_t posYend = (m_areaToRender.top + m_areaToRender.height) / m_tileSize;
 
 	if (m_areaToRender.width < 0)
 	{
 		posXend = 1280;
 	}
-	if (m_areaToRender.height < 0 )
+	if (m_areaToRender.height < 0)
 	{
 		posYend = 720;
 	}
@@ -89,6 +87,12 @@ void MapRenderer::Draw(sf::RenderTarget & window)
 			window.draw(m_manipulator);
 		}
 	}
+
+	std::cout << "======\n";
+	std::cout << posXbegin << " | " << posYbegin << "\n";
+	std::cout << indexBegin << "\n";
+	std::cout << posXend << " | " << posYend << "\n";
+	std::cout << m_areaToRender.left << ", " << m_areaToRender.top << ", " << m_areaToRender.width << ", " << m_areaToRender.height << "\n";
 }
 
 void MapRenderer::update()
